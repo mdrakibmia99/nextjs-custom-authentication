@@ -31,7 +31,7 @@ const RegisterPage = () => {
       if(res?.success ){
       alert(res.message || "registration successful")
       localStorage.setItem('accessToken', res.accessToken)
-      router.push("/")
+      router.push("/login")
       }else{
         alert(res.message || "registration failed")
       }
