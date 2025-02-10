@@ -27,7 +27,7 @@ const LoginPage = () => {
          const res=await loginUser(data)
          if(res?.success ){
          alert(res.message)
-         router.push("/")
+         router.push("/dashboard")
          }
    
          console.log(res,"register")

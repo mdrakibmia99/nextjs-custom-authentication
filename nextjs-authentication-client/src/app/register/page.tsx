@@ -27,10 +27,13 @@ const RegisterPage = () => {
    
     try {
       const res=await registerUser(data)
-      if(res?.accessToken ){
-      alert(res.message)
+
+      if(res?.success ){
+      alert(res.message || "registration successful")
       localStorage.setItem('accessToken', res.accessToken)
       router.push("/")
+      }else{
+        alert(res.message || "registration failed")
       }
     } catch (err: any) {
       console.error(err.message);
