@@ -14,18 +14,18 @@ app.use(express.json());
 
 // MongoDB Connection URL
 const uri = process.env.MONGODB_URI;
+console.log(uri,"uri test")
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-async function run() {
-  try {
+
     // Connect to MongoDB
     await client.connect();
     console.log("Connected to MongoDB");
 
-    const db = client.db("authentication");
+    const db = client.db("nextjs-custom-auth");
     const collection = db.collection("users");
 
     // User Registration
@@ -94,11 +94,7 @@ async function run() {
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
     });
-  } finally {
-  }
-}
 
-run().catch(console.dir);
 
 // Test route
 app.get("/", (req, res) => {

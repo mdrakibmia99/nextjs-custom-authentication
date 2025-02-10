@@ -18,7 +18,7 @@ const DashboardPage = async () => {
             alt="profileImage"
             width={100}
             height={100}
-            src={session?.user?.image as string}
+            src={session?.user?.image || "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"}
             className="mx-auto rounded-full"
           />
         </>

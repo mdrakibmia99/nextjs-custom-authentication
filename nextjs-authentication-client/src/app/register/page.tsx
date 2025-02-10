@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { registerUser } from "@/utils/actions/registerUser";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 export type UserData = {
@@ -17,11 +20,18 @@ const RegisterPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<UserData>();
+  const router=useRouter()
 
   const onSubmit = async (data: UserData) => {
-    console.log(data);
-
+    console.log(data,"register data");
+   
     try {
+      const res=await registerUser(data)
+      if(res?.accessToken ){
+      alert(res.message)
+      localStorage.setItem('accessToken', res.accessToken)
+      router.push("/")
+      }
     } catch (err: any) {
       console.error(err.message);
       throw new Error(err.message);
