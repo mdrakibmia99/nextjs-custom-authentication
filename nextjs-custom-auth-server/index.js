@@ -20,7 +20,8 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
 });
 
-
+async function run() {
+  try {
     // Connect to MongoDB
     await client.connect();
     console.log("Connected to MongoDB");
@@ -94,7 +95,11 @@ const client = new MongoClient(uri, {
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
     });
+  } finally {
+  }
+}
 
+run().catch(console.dir);
 
 // Test route
 app.get("/", (req, res) => {
